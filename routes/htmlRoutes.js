@@ -22,7 +22,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/foodie.html"));
   });
 
-  // selecttruck route loads selecttruck.html
+  // foodTruck route loads selecttruck.html
   app.get("/foodTruck", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/selecttruck.html"));
   });

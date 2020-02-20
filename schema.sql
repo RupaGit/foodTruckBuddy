@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS foodTruckBuddy_DB;
+DROP DATABASE IF EXISTS foodtruckbuddy_DB;
 -- Creates the "todolist" database --
-CREATE DATABASE foodTruckBuddy_DB;
+CREATE DATABASE foodtruckbuddy_DB;
