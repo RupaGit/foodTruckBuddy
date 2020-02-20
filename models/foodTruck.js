@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var FoodTruck = sequelize.define("foodTruck", {
-        name: {
+        truckName: {
             type: DataTypes.STRING,
             allowNull: false,
             len: [2, 50],
@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
         description: {
             type: DataTypes.STRING,
             allowNull: false,
-            len: [2, 300],
+            len: [2, 1024],
             trim: true,
         }
     });
