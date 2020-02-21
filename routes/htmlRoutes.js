@@ -24,7 +24,12 @@ module.exports = function(app) {
 
   // foodTruck route loads selecttruck.html
   app.get("/foodTruck", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/selecttruck.html"));
+    res.sendFile(path.join(__dirname, "../public/login.html"));
+  });
+
+  // redirect to Login page
+  app.get("/logIn", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
 
