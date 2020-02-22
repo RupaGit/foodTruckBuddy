@@ -15,8 +15,8 @@ var PORT = process.env.PORT || 4080;
 // Requiring our models for syncing
 var db = require("./models");
 
-var initPassport = require("./passport-config.js");
-initPassport(passport);
+// var initPassport = require("./passport-config.js");
+// initPassport(passport);
 
 
 // Sets up the Express app to handle data parsing
