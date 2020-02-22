@@ -36,6 +36,15 @@ module.exports = function (sequelize, DataTypes) {
             onDelete: "cascade"
         });
     };
+    FoodTruck.associate = function (models) {
+        // We're saying that a FoodTruckLocation should belong to a FoodTruck
+        // A FoodTruckLocation can't be created without an Author due to the foreign key constraint
+        FoodTruck.belongsTo(models.users, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
 
     return FoodTruck;
 };
