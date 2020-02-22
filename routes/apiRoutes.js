@@ -1,7 +1,5 @@
 var db = require("../models");
 var bcrypt = require('bcrypt');
-
-
 // Routes
 // =============================================================
 module.exports = function (app) {
@@ -23,8 +21,5 @@ module.exports = function (app) {
     db.foodTruck.create(req.body).then(function (dbPost) {
       res.json(dbPost);
     });
-  });
-
-
-  
+  }); 
 }
