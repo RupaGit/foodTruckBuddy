@@ -21,5 +21,18 @@ module.exports = function (app) {
     db.foodTruck.create(req.body).then(function (dbPost) {
       res.json(dbPost);
     });
-  }); 
+  });
+
+  app.get("/api/foodTrucks/:id", function (req, res) {
+    db.foodTruck.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbPost){
+      console.log(dbPost);
+    res.json(dbPost);
+  });
+});
+
+  
 }
