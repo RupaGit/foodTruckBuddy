@@ -32,6 +32,6 @@ $(document).ready(function () {
     $("#addressSubmit").on("click", function (event) {
         event.preventDefault();
         var address = $("#userAddress").val().trim();
-        getLatLng();
+        getLatLng(address);
     });
 });

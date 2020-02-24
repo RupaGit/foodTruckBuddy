@@ -9,6 +9,14 @@ function initMap() {
     var lat = parseFloat(data.lat);
     var lng = parseFloat(data.lng);
     var userLoc = {lat,lng}
+    var goldStar = {
+        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        fillColor: 'yellow',
+        fillOpacity: 1,
+        scale: 0.1,
+        strokeColor: 'gold',
+        strokeWeight: 4
+      };
 
     // document.getElementById('here').innerHTML = data.address;
     console.log("URL data is",data);
@@ -17,13 +25,14 @@ function initMap() {
             center: userLoc
         }
         var map = new google.maps.Map(document.getElementById('map'), options);
-        addMarker(userLoc);
+        addMarker(userLoc,goldStar);
         addMarker({lat:40.7128,lng:-74.0060});
         addMarker({lat:40.707904, lng:-74.010289});
-        function addMarker(coordinates) {
+        function addMarker(coordinates,icontype) {
             var marker = new google.maps.Marker({
                 position: coordinates,
-                map: map
+                map: map,
+                icon: icontype
             });
         }
 }
