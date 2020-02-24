@@ -26,3 +26,16 @@ $(document).ready(function() {
       );
     });
   });
+
+  //Send PUT Request
+ $.ajax("/api/foodTrucks", {
+    type: "PUT",
+    data: newFoodTruckName, newTwitterHandle, newCuisine, newDescription
+   }).then(
+     function(){
+       console.log("Edited food truck");
+     }
+   )
+   
+
+   
