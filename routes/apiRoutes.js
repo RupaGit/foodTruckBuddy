@@ -25,6 +25,16 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/foodTrucks/:id", function (req, res) {
+    db.foodTruck.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbPost){
+      console.log(dbPost);
+    res.json(dbPost);
+  });
+});
 
   
 }
