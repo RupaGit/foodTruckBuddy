@@ -19,12 +19,8 @@ $(document).ready(function () {
             function (data) {
                 console.log("logged in successfully");
                 console.log("The data returned to ajax is ",data);
-                var url = '/selectTruck.html?userId=' + encodeURIComponent(data);
+                var url = '/userDashboard.html?userId=' + encodeURIComponent(data);
                 document.location.href = url;
-
-                // Reload the page to get the updated list
-                // window.location.href = '/home.html'; //relative to domain
-
             }
         );
     });

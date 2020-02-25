@@ -3,13 +3,23 @@ $(document).ready(function () {
   $("#submitTruck").on("click", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+        tmp = params[i].split('=');
+        data[tmp[0]] = tmp[1];
+    }
+    var userId = parseInt(data.userId);
+    console.log(userId);
 
 
     var newTruck = {
       truckName: $("#foodTruckName").val().trim(),
       twitterHandle: $("#twitterHandle").val().trim(),
       cuisine: $("#cusine").val().trim(),
-      description: $("#description").val().trim()
+      description: $("#description").val().trim(),
+      userId: userId
     };
     console.log(newTruck)
 
