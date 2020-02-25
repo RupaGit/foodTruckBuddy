@@ -11,31 +11,51 @@ $(document).ready(function() {
         cuisine: $("#cusine").val().trim(),
         description: $("#description").val().trim() 
       };
-      console.log(newTruck);
+      console.log(newTruck)
   
       // Send the POST request.
       $.ajax("/api/foodTrucks", {
         type: "POST",
         data: newTruck
       }).then(
-        function () {
+        function() {
+          data();
           console.log("created new Truck");
+        });
+      });
+         
+
+  //Send PUT Request
+
+  $("#editTruck").on("click", function(){
+    var updatedTruck = {
+      truckName: $("#foodTruckName").val().trim(),
+        twitterHandle: $("#twitterHandle").val().trim(),
+        cuisine: $("#cusine").val().trim(),
+        description: $("#description").val().trim()
+
+    }
+    $.ajax("/api/foodTrucks", {
+      type: "PUT",
+      data: updatedTruck
+     }).then(
+       function(err,data){
+         data();
+         console.log("Edited food truck name");
+       }
+     )
+  
+
+  })
+
+  
+
+
+ 
+
           // Reload the page to get the updated list
           location.reload();
         }
       );
     });
   });
-
-  //Send PUT Request
- $.ajax("/api/foodTrucks", {
-    type: "PUT",
-    data: newFoodTruckName, newTwitterHandle, newCuisine, newDescription
-   }).then(
-     function(){
-       console.log("Edited food truck");
-     }
-   )
-   
-
-   
