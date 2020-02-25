@@ -16,11 +16,11 @@ $(document).ready(function () {
             type: "POST",
             data: user
         }).then(
-            function () {
+            function (data) {
                 console.log("logged in successfully");
-                // Reload the page to get the updated list
-                // window.location.href = '/home.html'; //relative to domain
-
+                console.log("The data returned to ajax is ",data);
+                var url = '/userDashboard.html?userId=' + encodeURIComponent(data);
+                document.location.href = url;
             }
         );
     });

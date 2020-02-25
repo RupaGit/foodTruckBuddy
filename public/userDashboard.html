@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" media="screen" title="no title">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <title>Food Truck Display</title>
+ 
+</head>
+
+<body>
+  <div id="nav-placeholder">
+    
+  </div>
+  <div class="container">
+  <div class="row" id="foodTruckDashboard" style="margin: 100 auto;">
+    <div class="col-lg-3 d-flex align-items-stretch">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h5>Add a new Food Truck</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Welcome to Food Truck buddy... Your one stop shop to get noticed by the customers. Add your truck details. </p>
+          <a href="#" data-toggle="modal" data-target="#addMyTruck" class="card-link">Add new Food truck</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 d-flex align-items-stretch">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h5>View my truck details</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">You can view your truck details here...  </p>
+          <a href="#" data-toggle="modal" data-target="#viewMyTruck" class="card-link">View my Food truck</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 d-flex align-items-stretch">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h5>Edit my truck details</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Do you want to change your food truck details? Feel free to click on the link to be able to edit your truck details </p>
+          <a href="#" data-toggle="modal" data-target="#exampleModal" class="card-link">Edit my Food truck</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 d-flex align-items-stretch">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h5>Add my truck location</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text"> Add your truck location </p>
+          <a href="#" data-toggle="modal" data-target="#addLocationModal" class="card-link">Add location</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Modal -->
+    <!-- Modal to add new Food Truck -->
+    <div class="modal fade bd-example-modal-lg" id="addMyTruck" tabindex="-1" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">       
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add my Food Truck</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="col-md-6 offset-md-3">
+            <form id="cms">
+              <div class="form-group">
+                <label for="foodTruckName">Food Truck Name:</label>
+                <input placeholder="Please enter name of your food truck" type="text" required class="form-control"
+                  id="foodTruckName">
+                <br />
+                <label for="cusine">Cuisine:</label>
+                <input placeholder="Please enter the type of food" type="text" required class="form-control" id="cusine">
+                <br />
+                <label for="twitterHandle">Twitter Handle:</label>
+                <input placeholder="Please enter your twitter handle" type="text" class="form-control" id="twitterHandle">
+                <br />
+                <label for="description">Food Truck Description:</label>
+                <textarea placeholder="Please enter description" class="form-control" required rows="10"
+                  id="description"></textarea>
+                <br />
+                <button type="submit" id="submitTruck" class="btn btn-success submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New Truck Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p> Please update your truck information. </p>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder=" Add your truck information"
+                aria-label="new-truck-info" aria-describedby="basic-addon2">
+
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- Second- Modal -->
+
+    <div class="modal fade" id="addMenuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="new-menu">Add Menu</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p> Please add your menu. </p>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Add your menu" aria-label="new-menu"
+                aria-describedby="basic-addon2">
+
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Third- Modal -->
+    <div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="add-menu">Add Location</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p> Please add your location. </p>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Add your location" aria-label="add-location"
+                aria-describedby="basic-addon2">
+
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    </form>
+    </div>
+</body>
+<script src="js/foodTruckLogic.js" type="text/javascript"></script>
+
+
+</html>
