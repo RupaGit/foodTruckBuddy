@@ -2,3 +2,15 @@
     background-image: url("public/css/img/food-truck.jpg");
     
 }
+
+#outer-div {
+    width: 100%; 
+    text-align: center; 
+}
+
+#inner-div {
+    display: inline-block; 
+    margin: 25px auto;
+    padding: 25px;
+    background-color: #8ebf42
+}
