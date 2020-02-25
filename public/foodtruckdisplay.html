@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+    <link rel="stylesheet" href="style.css" media="screen" title="no title">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <title>Food Truck Display</title>
 </head>
 <body>
+    <div id="nav-placeholder">
+        <img src="img/Food-Truck-Buddy-Logo.jpg" alt="Food-Truck-logo" width="120" height="120">
+      </div>
   <div class="col-md-6 offset-md-3 border rounded"> 
         <form id="cms">
             <div class="form-group ">
@@ -20,10 +23,100 @@
               <p class="card-text">Twitter Handle:</p>
               <p class="card-text">Cuisine:</p>
               <p class="card-text">Description:</p>
-                <!-- <a href="/edit" ></a></button> -->
-              <button><span>Edit Truck Info</span></button>
-              <button><span>Add Menu</span></button>
-              <button><span>Add Location</span></button>
+              
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><span></span>
+   Edit Truck Info
+</span>
+  </button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMenuModal"><span></span>
+    Add Menu
+</span>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addLocationModal"><span></span>
+    Add Locaton
+</span>
+</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Truck Information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <p> Please update your truck information. </p>
+         <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder=" Add your truck information" aria-label="new-truck-info" aria-describedby="basic-addon2">
+        
+            </div>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+             <!-- Second- Modal -->
+             
+  <div class="modal fade" id="addMenuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="new-menu">Add Menu</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <p> Please add your menu. </p>
+         <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Add your menu" aria-label="new-menu" aria-describedby="basic-addon2">
+        
+            </div>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+             <!-- Third- Modal -->
+             <div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="add-menu">Add Location</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                     <p> Please add your location. </p>
+                     <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Add your location" aria-label="add-location" aria-describedby="basic-addon2">
+                    
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
             </div>
 </body>

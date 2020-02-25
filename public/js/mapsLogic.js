@@ -8,7 +8,7 @@ function initMap() {
     }
     var lat = parseFloat(data.lat);
     var lng = parseFloat(data.lng);
-    var userLoc = {lat,lng}
+    var userLoc = { lat, lng }
     var goldStar = {
         path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
         fillColor: 'yellow',
@@ -16,30 +16,55 @@ function initMap() {
         scale: 0.1,
         strokeColor: 'gold',
         strokeWeight: 4
-      };
+    };
 
     // document.getElementById('here').innerHTML = data.address;
-    console.log("URL data is",data);
-        var options = {
-            zoom: 15,
-            center: userLoc
+    console.log("URL data is", data);
+    var options = {
+        zoom: 15,
+        center: userLoc
+    }
+    var map = new google.maps.Map(document.getElementById('map'), options);
+    addMarker(userLoc, goldStar);
+    addMarker({ lat: 40.7128, lng: -74.0060 });
+    addMarker({ lat: 40.707904, lng: -74.010289 });
+    function addMarker(coordinates, icontype) {
+        var marker = new google.maps.Marker({
+            position: coordinates,
+            map: map,
+            icon: icontype
+        });
+    }
+}
+
+function getRating() {
+    truckName = truckName.split(" ");
+    truckName = truckName.join("+");
+    console.log(truckName);
+    console.log("I am in ratings");
+
+    // Constructing a queryURL using the address captured from the Address input field in the HTML
+    var yelpQuery = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco/reviews"
+    var apiKey = "Bearer vONi09eF3JBM_C8djFa4wUnLta0Zmk331AT-PQ2-FNCFRND6BEeVZ5xtOCVeCvQViRhvegq23ZliF4kmyYTgSZNZ4gGBqICgX5KUdledrIBOpuu_uq5s1xs94XdUXnYx"
+
+    $.ajax({
+        url: yelpQuery,
+        method: "GET",
+        headers: {
+            Authorization: apiKey
         }
-        var map = new google.maps.Map(document.getElementById('map'), options);
-        addMarker(userLoc,goldStar);
-        addMarker({lat:40.7128,lng:-74.0060});
-        addMarker({lat:40.707904, lng:-74.010289});
-        function addMarker(coordinates,icontype) {
-            var marker = new google.maps.Marker({
-                position: coordinates,
-                map: map,
-                icon: icontype
-            });
-        }
+    }).then(function (response) {
+        console.log(response);
+    });
+
+
+
+
 }
 
 $(document).ready(function () {
     $("#nav-placeholder").load("nav.html");
     // google.maps.event.addDomListener(window, 'load', initMap); 
-    
-});
+    getRating();
 
+});
