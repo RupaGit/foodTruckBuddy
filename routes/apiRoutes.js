@@ -1,6 +1,8 @@
 var db = require("../models");
 var bcrypt = require('bcrypt');
 var passport = require("../config/passport");
+var path = require("path");
+
 
 // Routes
 // =============================================================
@@ -12,7 +14,10 @@ module.exports = function (app) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.redirect("/foodTruck");
+    console.log("Response from api routes",req.user.id);
+    // res.sendFile(path.join(__dirname, "../public/home.html"));
+
+    res.json(req.user.id);
   });
   app.post("/api/signup", function (req, res) {
     //encrypting password with bcrypt
@@ -59,7 +64,7 @@ module.exports = function (app) {
   app.get("/api/foodTrucks/:id", function (req, res) {
     db.foodTruck.findOne({
       where: {
-        id: req.params.id
+        userId: req.params.id
       }
     }).then(function (dbPost) {
       console.log(dbPost);
