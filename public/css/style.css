@@ -1,12 +1,15 @@
 .jumbotron{
-    background-image: url("public/css/img/food-truck.jpg");
-    
+    size:  100% 400px;
 }
+.text{
+    text-align: center;
 
+}
 #outer-div {
     width: 100%; 
     text-align: center; 
 }
+
 
 #inner-div {
     display: inline-block; 
