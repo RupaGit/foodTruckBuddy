@@ -5,6 +5,14 @@
     text-align: center;
 
 }
+/* 
+.wrapper{
+    display:none;
+} */
+
+.card-header{
+    color:blue;
+}
 #outer-div {
     width: 100%; 
     text-align: center; 
