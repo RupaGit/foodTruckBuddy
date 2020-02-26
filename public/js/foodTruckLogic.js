@@ -1,5 +1,6 @@
 $(document).ready(function () {
   $("#nav-placeholder").load("nav.html");
+
   $("#submitTruck").on("click", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
@@ -29,8 +30,11 @@ $(document).ready(function () {
       data: newTruck
     }).then(
       function () {
-        data();
-        console.log("created new Truck");
+        // data();
+        // console.log("created new Truck");
+        var url = '/userDashboard.html?userId=' + encodeURIComponent(userId);
+        document.location.href = url;
+        $("#foodTruckDashboard").prepend("<h4>Your truck added successfully<h4>");
       });
   });
 
@@ -54,3 +58,5 @@ $(document).ready(function () {
     });
   });
 });
+
+
