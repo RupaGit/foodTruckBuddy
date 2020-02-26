@@ -18,7 +18,7 @@
   </div>
   <div class="container">
   <div class="row" id="foodTruckDashboard" style="margin: 100 auto;">
-    <div class="col-lg-3 d-flex align-items-stretch">
+    <div class="col-lg-4 d-flex align-items-stretch">
       <div class="card" style="width: 18rem;">
         <div class="card-header">
           <h5>Add a new Food Truck</h5>
@@ -29,29 +29,18 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 d-flex align-items-stretch">
+    <div class="col-lg-4 d-flex align-items-stretch">
       <div class="card" style="width: 18rem;">
         <div class="card-header">
-          <h5>View my truck details</h5>
+          <h5>Manage my truck</h5>
         </div>
         <div class="card-body">
-          <p class="card-text">You can view your truck details here...  </p>
-          <a href="#" data-toggle="modal" data-target="#viewMyTruck" class="card-link">View my Food truck</a>
+          <p class="card-text">You can make changes to your truck or you can view your truck details </p>
+          <a href="#" data-toggle="modal" id="manageTruck" data-target="#manageMyTruck" class="card-link">Manage my Food truck</a>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 d-flex align-items-stretch">
-      <div class="card" style="width: 18rem;">
-        <div class="card-header">
-          <h5>Edit my truck details</h5>
-        </div>
-        <div class="card-body">
-          <p class="card-text">Do you want to change your food truck details? Feel free to click on the link to be able to edit your truck details </p>
-          <a href="#" data-toggle="modal" data-target="#exampleModal" class="card-link">Edit my Food truck</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 d-flex align-items-stretch">
+    <div class="col-lg-4 d-flex align-items-stretch">
       <div class="card" style="width: 18rem;">
         <div class="card-header">
           <h5>Add my truck location</h5>
@@ -104,8 +93,46 @@
       </div>
     </div>
 
+    <!-- Modal to manage Food Truck -->
+    <div class="modal fade bd-example-modal-lg" id="manageMyTruck" tabindex="-1" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">       
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Manage my Food Truck</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="col-md-6 offset-md-3">
+            <form id="cms">
+              <div class="form-group">
+                <label for="editFoodTruckName">Food Truck Name:</label>
+                <input placeholder="Please enter name of your food truck" type="text" required class="form-control"
+                  id="editFoodTruckName">
+                <br />
+                <label for="editCusine">Cuisine:</label>
+                <input placeholder="Please enter the type of food" type="text" required class="form-control" id="editCusine">
+                <br />
+                <label for="editTwitterHandle">Twitter Handle:</label>
+                <input placeholder="Please enter your twitter handle" type="text" class="form-control" id="editTwitterHandle">
+                <br />
+                <label for="editDescription">Food Truck Description:</label>
+                <textarea placeholder="Please enter description" class="form-control" required rows="10"
+                  id="editDescription"></textarea>
+                <br />
+                <button type="submit" id="saveTruck" class="btn btn-success submit">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -131,10 +158,10 @@
         </div>
       </div>
     </div>
-    </div>
+    </div> -->
     <!-- Second- Modal -->
 
-    <div class="modal fade" id="addMenuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- <div class="modal fade" id="addMenuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -160,10 +187,10 @@
         </div>
       </div>
     </div>
-    </div>
+    </div> -->
 
     <!-- Third- Modal -->
-    <div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- <div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -191,7 +218,7 @@
     </div>
     </div>
     </form>
-    </div>
+    </div> --> 
 </body>
 <script src="js/foodTruckLogic.js" type="text/javascript"></script>
 
