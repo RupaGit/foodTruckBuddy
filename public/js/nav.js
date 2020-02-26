@@ -4,7 +4,7 @@ $(document).ready(function () {
       }).then(
         function (res) {
             console.log(res);
-            if(res === undefined || res === null) {
+            if(Object.keys(res).length === 0) {
                 $("#loginHandler").html("LogIn / SignUp");
                 $("#loginHandler").attr("href", "/logIn");
             }
