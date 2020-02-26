@@ -42,4 +42,9 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
+  // logout redirect to home page
+  app.get("/logOut", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
+  });
+
 };
