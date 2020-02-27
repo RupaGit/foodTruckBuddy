@@ -37,34 +37,11 @@ function initMap() {
     }
 }
 
-function getRating() {
-    truckName = truckName.split(" ");
-    truckName = truckName.join("+");
-    console.log(truckName);
-    console.log("I am in ratings");
 
-    // Constructing a queryURL using the address captured from the Address input field in the HTML
-    var yelpQuery = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco/reviews"
-    var apiKey = "Bearer vONi09eF3JBM_C8djFa4wUnLta0Zmk331AT-PQ2-FNCFRND6BEeVZ5xtOCVeCvQViRhvegq23ZliF4kmyYTgSZNZ4gGBqICgX5KUdledrIBOpuu_uq5s1xs94XdUXnYx"
-
-    $.ajax({
-        url: yelpQuery,
-        method: "GET",
-        headers: {
-            Authorization: apiKey
-        }
-    }).then(function (response) {
-        console.log(response);
-    });
-
-
-
-
-}
 
 $(document).ready(function () {
     $("#nav-placeholder").load("nav.html");
-    // google.maps.event.addDomListener(window, 'load', initMap); 
-    getRating();
+    google.maps.event.addDomListener(window, 'load', initMap); 
+    // getRating();
 
 });
