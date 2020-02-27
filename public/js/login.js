@@ -19,7 +19,7 @@ $(document).ready(function () {
             function (data) {
                 console.log("logged in successfully");
                 console.log("The data returned to ajax is ",data);
-                var url = '/userDashboard.html?userId=' + encodeURIComponent(data);
+                var url = '/userDashboard.html';
                 document.location.href = url;
             }
         );

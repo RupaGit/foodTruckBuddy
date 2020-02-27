@@ -2,51 +2,52 @@
 
 $(document).ready(function () {
   $("#nav-placeholder").load("nav.html");
-
-  function getUserData() {
-    console.log("I am called");
+  //get user ID if the user is logged in
+  var userId;
     $.ajax("/api/user_data", {
       type: "GET"
     }).then(
       function (res) {
-        return res.id;
+        userId = res.id;
         console.log(res.id);
+        $.ajax("/api/foodTrucks/"+userId, {
+          type: "GET"
+        }).then(
+          function(res){
+            if(res){
+              $("#AddTruckText").html("You already have a truck added. You can only manage or add location to that truck");
+              $("#addTruckLink").hide();
+            }
+          });
       });
-  }
+    
+  //Validate if there is a food truck created for user
+  
 
   $("#submitTruck").on("click", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
     var truckName = $("#foodTruckName").val().split(" ");
-    truckName = truckName.join("-");
-    console.log(truckName);
-    console.log("I am in ratings");
+      truckName = truckName.join("-");
+      console.log(truckName);
+      console.log("I am in ratings");
+    
+      // Constructing a queryURL using the address captured from the Address input field in the HTML
+      var yelpQuery = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/"+truckName+"/reviews"
+      var apiKey = "Bearer vONi09eF3JBM_C8djFa4wUnLta0Zmk331AT-PQ2-FNCFRND6BEeVZ5xtOCVeCvQViRhvegq23ZliF4kmyYTgSZNZ4gGBqICgX5KUdledrIBOpuu_uq5s1xs94XdUXnYx"
+    
+      // $.ajax({
+      //     url: yelpQuery,
+      //     method: "GET",
+      //     headers: {
+      //         Authorization: apiKey
+      //     }
+      // }).then(function (response) {
+      //     console.log(response.reviews[0]);
+      //     // console.log response;
+      // });    
 
-    // Constructing a queryURL using the address captured from the Address input field in the HTML
-    var yelpQuery = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + truckName + "/reviews"
-    var apiKey = "Bearer vONi09eF3JBM_C8djFa4wUnLta0Zmk331AT-PQ2-FNCFRND6BEeVZ5xtOCVeCvQViRhvegq23ZliF4kmyYTgSZNZ4gGBqICgX5KUdledrIBOpuu_uq5s1xs94XdUXnYx"
-
-    $.ajax({
-      url: yelpQuery,
-      method: "GET",
-      headers: {
-        Authorization: apiKey
-      }
-    }).then(function (response) {
-      console.log(response.reviews[0]);
-      // console.log response;
-    });
-
-    var url = document.location.href,
-      params = url.split('?')[1].split('&'),
-      data = {}, tmp;
-    for (var i = 0, l = params.length; i < l; i++) {
-      tmp = params[i].split('=');
-      data[tmp[0]] = tmp[1];
-    }
-    var userId = parseInt(data.userId);
-    console.log(userId);
-
+    
 
     var newTruck = {
       truckName: $("#foodTruckName").val().trim(),
