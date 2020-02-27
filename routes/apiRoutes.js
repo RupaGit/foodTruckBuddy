@@ -52,7 +52,6 @@ module.exports = function (app) {
     }
   });
   app.post("/api/foodTrucks", function (req, res) {
-    console.log("Trying to insert" + req.body)
     db.foodTruck.create(req.body).then(function (dbPost) {
       res.json(dbPost);
     });
@@ -81,8 +80,5 @@ app.put("/api/foodTrucks", function(req, res) {
     res.json(dbPost);
   });
 });
-
-
-
 
 }
