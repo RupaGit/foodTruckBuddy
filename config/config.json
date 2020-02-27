@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "Deardenis1",
-=======
-    "password": "Gettingthrough45!",
->>>>>>> df5e28ae44369c0a0e3b0f532aae9078d10d3737
     "database": "foodtruckbuddy_DB",
     "host": "127.0.0.1",
     "dialect": "mysql",
