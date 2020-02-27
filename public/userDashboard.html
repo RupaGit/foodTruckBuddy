@@ -137,7 +137,7 @@
       <div class="modal-dialog modal-lg">       
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Manage my Food Truck</h5>
+            <h5 class="modal-title">Enter your Food Truck's Location</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -145,21 +145,21 @@
           <div class="col-md-6 offset-md-3">
             <form id="cms">
               <div class="form-group">
-                <label for="editFoodTruckName">Food Truck Name:</label>
-                <input placeholder="Please enter name of your food truck" type="text" required class="form-control"
-                  id="editFoodTruckName">
+                <label for="editStreetAddress">Street Address</label>
+                <input placeholder="Enter street address where you will park your truck" type="text" required class="form-control"
+                  id="editStreetAddress">
                 <br />
-                <label for="editCusine">Cuisine:</label>
-                <input placeholder="Please enter the type of food" type="text" required class="form-control" id="editCusine">
+                <label for="editCity">City</label>
+                <input placeholder="Enter the City where you will park your truck" type="text" required class="form-control" id="editCity">
                 <br />
-                <label for="editTwitterHandle">Twitter Handle:</label>
-                <input placeholder="Please enter your twitter handle" type="text" class="form-control" id="editTwitterHandle">
+                <label for="editState">State</label>
+                <input placeholder="Enter the State where you will park your truck" type="text" class="form-control" id="editState">
                 <br />
-                <label for="editDescription">Food Truck Description:</label>
-                <textarea placeholder="Please enter description" class="form-control" required rows="10"
-                  id="editDescription"></textarea>
+                <label for="editZipCode">Zip Code</label>
+                <input placeholder="Enter the Zip Code where you will park your truck" type ="text" class="form-control" required rows="10"
+                  id="editZipCode"></input>
                 <br />
-                <button type="submit" id="saveTruck" class="btn btn-success submit">Save</button>
+                <button type="submit" id="saveLocation" class="btn btn-success submit">Save</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
               </div>

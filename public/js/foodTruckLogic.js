@@ -89,26 +89,57 @@ $(document).ready(function () {
 
           });
       });
-    });
+  });
 
-    //Send PUT Request
+  //Send PUT Request
 
-    $("#saveTruck").on("click", function () {
-      event.preventDefault();
-      var updatedTruck = {
-        truckName: $("#editFoodTruckName").val().trim(),
-        twitterHandle: $("#editTwitterHandle").val().trim(),
-        cuisine: $("#editCusine").val().trim(),
-        description: $("#editDescription").val().trim()
-      }
-      console.log(updatedTruck);
-      $.ajax("/api/foodTrucks", {
-        type: "PUT",
-        data: updatedTruck
-      }).then(function (err, data) {
-        console.log("Edited food truck name");
-      });
+  $("#saveTruck").on("click", function () {
+    event.preventDefault();
+    var updatedTruck = {
+      truckName: $("#editFoodTruckName").val().trim(),
+      twitterHandle: $("#editTwitterHandle").val().trim(),
+      cuisine: $("#editCusine").val().trim(),
+      description: $("#editDescription").val().trim()
+    }
+    console.log(updatedTruck);
+    $.ajax("/api/foodTrucks", {
+      type: "PUT",
+      data: updatedTruck
+    }).then(function (err, data) {
+      console.log("Edited food truck name");
     });
   });
 
+  $("#saveLocation").on("click", function () {
+    var truckId;
+    var truckLocation = $("#editStreetAddress").val().trim() + ", " + $("#editCity").val().trim() + ", " + $("#editState").val().trim() + ", " + $("#editZipCode").val().trim();
+    event.preventDefault();
+    $.ajax("/api/user_data", {
+      type: "GET"
+    }).then(
+      function (res) {
+        $.ajax("/api/foodTrucks/" + res.id, {
+          type: "GET"
+        }).then(
+          function (truckData) {
+            console.log(truckData);
+            truckId = truckData.id;
+            console.log("Truck ID from AJAX is ", truckId);
+            var locationDetails = {
+              location: truckLocation,
+              foodTruckId: truckId
+            }
+            console.log(locationDetails);
+            $.ajax("/api/foodTruckLocations/" + truckId, {
+              type: "POST",
+              data: locationDetails
+            }).then(function (err, data) {
+              console.log("Food Truck Location");
+            });
+          });
+
+
+      });
+  });
+});
 
