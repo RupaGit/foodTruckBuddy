@@ -2,17 +2,15 @@
 
 $(document).ready(function () {
   $("#nav-placeholder").load("nav.html");
-
-  function getUserData() {
-    console.log("I am called");
+  var userId;
     $.ajax("/api/user_data", {
       type: "GET"
     }).then(
       function (res) {
-        return res.id;
+        userId = res.id;
         console.log(res.id);
       });
-  }
+
 
   $("#submitTruck").on("click", function (event) {
     // Make sure to preventDefault on a submit event.
@@ -37,15 +35,15 @@ $(document).ready(function () {
       //     // console.log response;
       // });    
 
-    var url = document.location.href,
-      params = url.split('?')[1].split('&'),
-      data = {}, tmp;
-    for (var i = 0, l = params.length; i < l; i++) {
-      tmp = params[i].split('=');
-      data[tmp[0]] = tmp[1];
-    }
-    var userId = parseInt(data.userId);
-    console.log(userId);
+    // var url = document.location.href,
+    //   params = url.split('?')[1].split('&'),
+    //   data = {}, tmp;
+    // for (var i = 0, l = params.length; i < l; i++) {
+    //   tmp = params[i].split('=');
+    //   data[tmp[0]] = tmp[1];
+    // }
+    // var userId = parseInt(data.userId);
+    // console.log(userId);
 
 
     var newTruck = {

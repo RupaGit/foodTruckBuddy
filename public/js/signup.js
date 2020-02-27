@@ -21,7 +21,7 @@ $(document).ready(function () {
             function () {
                 console.log("created new User");
                 // Reload the page to get the updated list
-                window.location.href = '/home.html'; //relative to domain
+                window.location.href = '/userDashboard.html'; //relative to domain
 
             }
         );
