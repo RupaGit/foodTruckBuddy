@@ -3,8 +3,7 @@
 }
 
 .footer{
-    text-align:center;
-    float:right;
+    position:relative;
 }
 #outer-div {
     width: 100%; 
