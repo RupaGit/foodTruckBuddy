@@ -2,7 +2,10 @@
     color:blue;
 }
 
-
+.footer{
+    text-align:center;
+    float:right;
+}
 #outer-div {
     width: 100%; 
     text-align: center; 
