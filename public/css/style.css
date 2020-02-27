@@ -2,7 +2,9 @@
     color:blue;
 }
 
-
+.footer{
+    position:relative;
+}
 #outer-div {
     width: 100%; 
     text-align: center; 
