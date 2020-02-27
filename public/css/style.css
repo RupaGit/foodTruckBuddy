@@ -8,6 +8,11 @@
     text-align: center; 
 }
 
+#map {
+    margin: 0 auto;
+    height: 400px;
+    width: 50%
+}
 
 #inner-div {
     display: inline-block; 
