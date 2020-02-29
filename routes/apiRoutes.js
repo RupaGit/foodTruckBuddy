@@ -51,12 +51,15 @@ module.exports = function (app) {
       });
     }
   });
+
+  //Post a food truck to the database
   app.post("/api/foodTrucks", function (req, res) {
     db.foodTruck.create(req.body).then(function (dbPost) {
       res.json(dbPost);
     });
   });
 
+  //get food trucks by user id
   app.get("/api/foodTrucks/:id", function (req, res) {
     db.foodTruck.findOne({
       where: {
@@ -68,15 +71,23 @@ module.exports = function (app) {
     });
   });
 
-// PUT route for updating posts
-app.put("/api/foodTrucks", function(req, res) {
+// PUT route for updating food trucks
+app.put("/api/foodTrucks/:id", function(req, res) {
+  console.log(req.params.id)
   db.foodTruck.update(
     req.body,
     {
       where: {
-        id: req.body.id
+        userId: req.params.id
       }
     }).then(function(dbPost) {
+    res.json(dbPost);
+  });
+});
+
+//POST route for adding food truck locations
+app.post("/api/foodTruckLocations", function (req, res) {
+  db.foodTruckLocation.create(req.body).then(function (dbPost) {
     res.json(dbPost);
   });
 });
