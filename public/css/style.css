@@ -18,8 +18,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     height:90%;
-    
+    margin:auto;  
 }
+
 .glyphicon glyphicon-log-in{
     color:white;
 }
