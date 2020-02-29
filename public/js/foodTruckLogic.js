@@ -146,7 +146,7 @@ $(document).ready(function () {
                 console.log("Truck ID from AJAX is ", truckId);
                 var locationDetails = {
                   location: truckLocation,
-                  foodTruckId: truckId,
+                  FoodTruckId: truckId,
                   latitude: latlong.lat,
                   longitude: latlong.lng
                 }
