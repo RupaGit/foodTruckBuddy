@@ -1,78 +1,71 @@
-
-
 $(document).ready(function () {
   $("#nav-placeholder").load("nav.html");
   //get user ID if the user is logged in
   var userId;
-    $.ajax("/api/user_data", {
-      type: "GET"
-    }).then(
-      function (res) {
-        userId = res.id;
-        console.log(res.id);
-        $.ajax("/api/foodTrucks/"+userId, {
-          type: "GET"
-        }).then(
-          function(res){
-            if(res){
-              $("#AddTruckText").html("You already have a truck added. You can only manage or add location to that truck");
-              $("#addTruckLink").hide();
-            }
-          });
-      });
-    
-  //Validate if there is a food truck created for user
-  
+  $.ajax("/api/user_data", {
+    type: "GET"
+  }).then(
+    function (res) {
+      userId = res.id;
+      console.log(res.id);
+      //Validate if there is a food truck created for user
+      $.ajax("/api/foodTrucks/" + userId, {
+        type: "GET"
+      }).then(
+        function (res) {
+          if (res) {
+            $("#AddTruckText").html("You already have a truck added. You can only manage or add location to that truck");
+            $("#addTruckLink").hide();
+          }
+        });
+    });
 
   $("#submitTruck").on("click", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
+    var truckRating;
     var truckName = $("#foodTruckName").val().split(" ");
-      truckName = truckName.join("-");
-      console.log(truckName);
-      console.log("I am in ratings");
-    
-      // Constructing a queryURL using the address captured from the Address input field in the HTML
-      var yelpQuery = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/"+truckName+"/reviews"
-      var apiKey = "Bearer vONi09eF3JBM_C8djFa4wUnLta0Zmk331AT-PQ2-FNCFRND6BEeVZ5xtOCVeCvQViRhvegq23ZliF4kmyYTgSZNZ4gGBqICgX5KUdledrIBOpuu_uq5s1xs94XdUXnYx"
-    
-      // $.ajax({
-      //     url: yelpQuery,
-      //     method: "GET",
-      //     headers: {
-      //         Authorization: apiKey
-      //     }
-      // }).then(function (response) {
-      //     console.log(response.reviews[0]);
-      //     // console.log response;
-      // });    
+    truckName = truckName.join("-");
+    console.log(truckName);
+    // Constructing a queryURL using the address captured from the Address input field in the HTML
+    var yelpQuery = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + truckName + "-new-york"
+    var apiKey = "Bearer vONi09eF3JBM_C8djFa4wUnLta0Zmk331AT-PQ2-FNCFRND6BEeVZ5xtOCVeCvQViRhvegq23ZliF4kmyYTgSZNZ4gGBqICgX5KUdledrIBOpuu_uq5s1xs94XdUXnYx"
+    $.ajax({
+      url: yelpQuery,
+      method: "GET",
+      headers: {
+        Authorization: apiKey
+      }
+    }).then(function (response, error) {
 
-    
+      truckRating = response.rating;
 
-    var newTruck = {
-      truckName: $("#foodTruckName").val().trim(),
-      twitterHandle: $("#twitterHandle").val().trim(),
-      cuisine: $("#cusine").val().trim(),
-      description: $("#description").val().trim(),
-      userId: userId
-    };
-    console.log(newTruck)
-
-    // Send the POST request.
-    $.ajax("/api/foodTrucks", {
-      type: "POST",
-      data: newTruck
-    }).then(
-      function () {
-        // data();
-        // console.log("created new Truck");
-        var url = '/userDashboard.html?userId=' + encodeURIComponent(userId);
-        document.location.href = url;
-        $("#foodTruckDashboard").prepend("<h4>Your truck added successfully<h4>");
-      });
+      // console.log response;
+      var newTruck = {
+        truckName: $("#foodTruckName").val().trim(),
+        twitterHandle: $("#twitterHandle").val().trim(),
+        cuisine: $("#cusine").val().trim(),
+        description: $("#description").val().trim(),
+        rating: truckRating,
+        userId: userId
+      };
+      console.log(newTruck)
+      // Send the POST request.
+      $.ajax("/api/foodTrucks", {
+        type: "POST",
+        data: newTruck
+      }).then(
+        function () {
+          // data();
+          // console.log("created new Truck");
+          var url = '/userDashboard.html?userId=' + encodeURIComponent(userId);
+          document.location.href = url;
+          $("#foodTruckDashboard").prepend("<h4>Your truck added successfully<h4>");
+        });
+    });
   });
 
-
+  //Display truck details
   $("#manageTruck").on("click", function () {
     console.log("I am here");
     $.ajax("/api/user_data", {
@@ -87,13 +80,11 @@ $(document).ready(function () {
             $("#editCusine").val(truckData.cuisine);
             $("#editTwitterHandle").val(truckData.twitterHandle);
             $("#editDescription").val(truckData.description);
-
           });
       });
   });
 
-  //Send PUT Request
-
+  //Send PUT Request to update truck
   $("#saveTruck").on("click", function () {
     event.preventDefault();
     var updatedTruck = {
@@ -111,6 +102,7 @@ $(document).ready(function () {
     });
   });
 
+  //Adding truck location
   $("#saveLocation").on("click", function () {
     var truckId;
     var truckLocation = $("#editStreetAddress").val().trim() + ", " + $("#editCity").val().trim() + ", " + $("#editState").val().trim() + ", " + $("#editZipCode").val().trim();
@@ -139,8 +131,6 @@ $(document).ready(function () {
             });
           });
 
-
       });
   });
 });
-

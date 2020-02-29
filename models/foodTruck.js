@@ -20,6 +20,11 @@ module.exports = function (sequelize, DataTypes) {
             len: [2, 50],
             trim: true,
         },
+        rating: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            trim: true,
+        },
 
         description: {
             type: DataTypes.STRING,
