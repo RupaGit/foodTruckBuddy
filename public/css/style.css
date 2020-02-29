@@ -3,8 +3,7 @@
 }
 
 .food-image{
-    background-image:url("../img/greek-food.jpg");
-    background-repeat: no-repeat;
+    background-image:url("../img/.jpg");
     /* Full height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -14,7 +13,11 @@
 }
 
 .truck-image{
-    background-image: url("../img/food-truck-home-2.jpg");
+    background-image: url("../img/food-truck.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:90%;
+    
 }
 
 .footer{
