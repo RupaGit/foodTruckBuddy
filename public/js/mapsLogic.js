@@ -36,9 +36,9 @@ function initMap() {
             var newCard = $("<div>");
             var newCardHeader = $("<div>");
             var newCardBody = $("<div>");
-            newCard.addClass("card d-flex h-auto");
+            newCard.addClass("card");
             newCardHeader.addClass("card-header");
-            newCardBody.addClass("card-body d-flex h-auto");
+            newCardBody.addClass("card-body");
             newCardHeader.append($("<h5>").text(data[i].FoodTruck.truckName+" (Yelp Rating: "+data[i].FoodTruck.rating+")"));
             newCardBody.append($("<h5>").text(data[i].FoodTruck.description), "<br/>");
             newCardBody.append($("<p>").text("Cusine: "+data[i].FoodTruck.cuisine));
