@@ -10,31 +10,34 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
+<header>
+    <!-- Logo -->
+    <div id="nav-placeholder">
+    </div>
+</header>
 
 <body>
-    <div class="row">
-            <div id="nav-placeholder">
-              </div>
-        </div>
-        <div class="col-md-6 offset-md-3 border rounded" id ="signUpForm">
-            <form id="cms">
-                <div class="form-group ">
-                    <h4> Sign Up </h4>
-                    <br />
-                    <label for="userName">Name:</label>
-                    <input placeholder="Please enter your name" type="text" required class="form-control" id="userName">
-                    <br />
-                    <label for="userEmail">Email Address:</label>
-                    <input placeholder="Please enter your email" type="email" required class="form-control" id="userEmail">
-                    <br />
-                    <label for="userPassword">Password:</label>
-                    <input placeholder="Please enter your password" type="password" required class="form-control" id="userPassword">
-                    <br />
-                    <br />
-                    <button type="submit" id="signup" class="btn btn-success submit">Submit</button>
-                </div>
-            </form>
-        </div>
+    </div>
+    <div class="col-md-6 offset-md-3 border rounded" id="signUpForm">
+        <form id="cms">
+            <div class="form-group ">
+                <h4> Sign Up </h4>
+                <br />
+                <label for="userName">Name:</label>
+                <input placeholder="Please enter your name" type="text" required class="form-control" id="userName">
+                <br />
+                <label for="userEmail">Email Address:</label>
+                <input placeholder="Please enter your email" type="email" required class="form-control" id="userEmail">
+                <br />
+                <label for="userPassword">Password:</label>
+                <input placeholder="Please enter your password" type="password" required class="form-control"
+                    id="userPassword">
+                <br />
+                <br />
+                <button type="submit" id="signup" class="btn btn-success submit">Submit</button>
+            </div>
+        </form>
+    </div>
 </body>
 <script src="js/signup.js" type="text/javascript"></script>
 
