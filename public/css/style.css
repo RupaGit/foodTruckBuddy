@@ -1,6 +1,9 @@
 .card-header{
     color:blue;
 }
+.card-body, .card {
+    display: inline-block;
+}
 
 .food-image{
     background-image:url("../img/eggs.jpg");
@@ -12,6 +15,14 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+#map {
+    background-color: none;
+}
+
+div {
+    background-color: whitesmoke;
+}
+
 
 .truck-image{
     background-image: url("../img/food-truck.jpg");
@@ -23,6 +34,7 @@
 
 .glyphicon glyphicon-log-in{
     color:white;
+
 }
 
 .footer{

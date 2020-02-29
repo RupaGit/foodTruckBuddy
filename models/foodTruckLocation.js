@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var FoodTruckLocation = sequelize.define("foodTruckLocation", {
+    var FoodTruckLocation = sequelize.define("FoodTruckLocation", {
 
         location: {
             type: DataTypes.STRING,
@@ -20,7 +20,7 @@ module.exports = function (sequelize, DataTypes) {
     FoodTruckLocation.associate = function (models) {
         // We're saying that a FoodTruckLocation should belong to a FoodTruck
         // A FoodTruckLocation can't be created without an Author due to the foreign key constraint
-        FoodTruckLocation.belongsTo(models.foodTruck, {
+        FoodTruckLocation.belongsTo(models.FoodTruck, {
             foreignKey: {
                 allowNull: false
             }
