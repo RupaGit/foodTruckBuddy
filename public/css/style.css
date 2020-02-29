@@ -13,6 +13,10 @@
     background-size: cover;
 }
 
+.truck-image{
+    background-image: url("../img/food-truck-home-2.jpg");
+}
+
 .footer{
     position:relative;
 }
