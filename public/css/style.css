@@ -6,10 +6,10 @@
 }
 
 .food-image{
-    background-image:url("../img/greek-food.jpg");
-    background-repeat: no-repeat;
+    background-image:url("../img/eggs.jpg");
     /* Full height */
-    height: 100%;
+    height: 200%;
+    width:90%;
     /* Center and scale the image nicely */
     /*background-position: center;*/
     background-repeat: no-repeat;
@@ -25,14 +25,15 @@ div {
 
 
 .truck-image{
-    background-image: url("../img/fastFood.jpg");
-    background-repeat: no-repeat;
-    /* Full height */
-    height: 100%;
-    /* Center and scale the image nicely */
-    /*background-position: center;*/
-    background-repeat: no-repeat;
+    background-image: url("../img/food-truck.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    height:90%;
+    
+}
+.glyphicon glyphicon-log-in{
+    color:white;
+
 }
 
 .footer{
