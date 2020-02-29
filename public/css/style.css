@@ -2,7 +2,7 @@
     color:blue;
 }
 
-food-image{
+.food-image{
     background-image:url("../img/greek-food.jpg");
     background-repeat: no-repeat;
     /* Full height */
