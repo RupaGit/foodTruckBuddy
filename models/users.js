@@ -34,7 +34,7 @@ module.exports = function (sequelize, DataTypes) {
     Users.associate = function (models) {
         // Associating FoodTruck with FoodTruckLocation
         // When a FoodTruck is deleted, also delete any associated FoodTruckLocation
-        Users.hasMany(models.foodTruck, {
+        Users.hasMany(models.FoodTruck, {
             onDelete: "cascade"
         });
     };

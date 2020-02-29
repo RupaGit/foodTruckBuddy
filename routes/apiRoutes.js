@@ -54,14 +54,14 @@ module.exports = function (app) {
 
   //Post a food truck to the database
   app.post("/api/foodTrucks", function (req, res) {
-    db.foodTruck.create(req.body).then(function (dbPost) {
+    db.FoodTruck.create(req.body).then(function (dbPost) {
       res.json(dbPost);
     });
   });
 
   //get food trucks by user id
   app.get("/api/foodTrucks/:id", function (req, res) {
-    db.foodTruck.findOne({
+    db.FoodTruck.findOne({
       where: {
         userId: req.params.id
       }
@@ -74,7 +74,7 @@ module.exports = function (app) {
 // PUT route for updating food trucks
 app.put("/api/foodTrucks/:id", function(req, res) {
   console.log(req.params.id)
-  db.foodTruck.update(
+  db.FoodTruck.update(
     req.body,
     {
       where: {
@@ -87,9 +87,25 @@ app.put("/api/foodTrucks/:id", function(req, res) {
 
 //POST route for adding food truck locations
 app.post("/api/foodTruckLocations", function (req, res) {
-  db.foodTruckLocation.create(req.body).then(function (dbPost) {
+  console.log(req.body);
+  db.FoodTruckLocation.create(req.body).then(function (dbPost) {
     res.json(dbPost);
   });
 });
 
+app.get("/api/getTruckDetails", function(req,res) {
+  db.FoodTruckLocation.findAll({
+    include: [
+      {
+        model: db.FoodTruck,
+      }
+    ]
+  }).then(function(dbData){
+    res.json(dbData);
+  });
+    
+});
+
 }
+
+

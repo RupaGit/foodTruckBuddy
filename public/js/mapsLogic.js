@@ -1,3 +1,6 @@
+var latlng = [];
+
+
 function initMap() {
     var url = document.location.href,
         params = url.split('?')[1].split('&'),
@@ -17,7 +20,6 @@ function initMap() {
         strokeColor: 'gold',
         strokeWeight: 4
     };
-
     // document.getElementById('here').innerHTML = data.address;
     console.log("URL data is", data);
     var options = {
@@ -26,9 +28,38 @@ function initMap() {
     }
     var map = new google.maps.Map(document.getElementById('map'), options);
     addMarker(userLoc, goldStar);
-    addMarker({ lat: 40.7128, lng: -74.0060 });
-    addMarker({ lat: 40.707904, lng: -74.010289 });
+    $.ajax("/api/getTruckDetails", {
+        type: "GET",
+      }).then(function (data) {
+        console.log(data);
+        for(var i=0; i<data.length; i++){
+            var newCard = $("<div>");
+            var newCardHeader = $("<div>");
+            var newCardBody = $("<div>");
+            newCard.addClass("card d-flex h-auto");
+            newCardHeader.addClass("card-header");
+            newCardBody.addClass("card-body d-flex h-auto");
+            newCardHeader.append($("<h5>").text(data[i].FoodTruck.truckName+" (Yelp Rating: "+data[i].FoodTruck.rating+")"));
+            newCardBody.append($("<h5>").text(data[i].FoodTruck.description), "<br/>");
+            newCardBody.append($("<p>").text("Cusine: "+data[i].FoodTruck.cuisine));
+            newCardBody.append($("<p>").text("Follow on Twitter: "+data[i].FoodTruck.twitterHandle));
+            newCardBody.append($("<p>").text(data[i].location));
+            newCard.append(newCardHeader, newCardBody, "<br />");
+            latlng.push({lat: data[i].latitude, lng: data[i].longitude });
+            $("#truckList").append(newCard);
+        }
+        console.log("Latitude longiture is ", latlng.length);
+        for(var i=0; i<latlng.length; i++){
+            // console.log(latlng[i]);
+            console.log(i)
+            addMarker(latlng[i]);
+        }
+
+        
+    });
+ 
     function addMarker(coordinates, icontype) {
+        console.log("I am in add marker",coordinates);
         var marker = new google.maps.Marker({
             position: coordinates,
             map: map,
@@ -37,11 +68,16 @@ function initMap() {
     }
 }
 
+// function findFoodTrucks(){
+    
+// }
+
 
 
 $(document).ready(function () {
     $("#nav-placeholder").load("nav.html");
-    google.maps.event.addDomListener(window, 'load', initMap); 
-    // getRating();
+    // findFoodTrucks();
+
+    // google.maps.event.addDomListener(window, 'load', initMap); 
 
 });

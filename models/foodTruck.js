@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var FoodTruck = sequelize.define("foodTruck", {
+    var FoodTruck = sequelize.define("FoodTruck", {
         truckName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
     FoodTruck.associate = function (models) {
         // Associating FoodTruck with FoodTruckLocation
         // When a FoodTruck is deleted, also delete any associated FoodTruckLocation
-        FoodTruck.hasMany(models.foodTruckLocation, {
+        FoodTruck.hasMany(models.FoodTruckLocation, {
             onDelete: "cascade"
         });
     };
