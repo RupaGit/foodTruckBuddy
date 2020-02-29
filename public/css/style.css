@@ -1,6 +1,9 @@
 .card-header{
     color:blue;
 }
+.card-body, .card {
+    display: inline-block;
+}
 
 .food-image{
     background-image:url("../img/greek-food.jpg");
@@ -12,9 +15,24 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+#map {
+    background-color: none;
+}
+
+div {
+    background-color: whitesmoke;
+}
+
 
 .truck-image{
-    background-image: url("../img/food-truck-home-2.jpg");
+    background-image: url("../img/fastFood.jpg");
+    background-repeat: no-repeat;
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    /*background-position: center;*/
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .footer{
