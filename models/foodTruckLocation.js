@@ -7,6 +7,14 @@ module.exports = function (sequelize, DataTypes) {
             len: [2, 100],
             trim: true,
         },
+        latitude: {
+            type: DataTypes.DOUBLE,
+            allowNull: false
+        },
+        longitude: {
+            type: DataTypes.DOUBLE,
+            allowNull: false
+        }
     });
 
     FoodTruckLocation.associate = function (models) {

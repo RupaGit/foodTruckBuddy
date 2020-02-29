@@ -94,7 +94,7 @@ $(document).ready(function () {
       description: $("#editDescription").val().trim()
     }
     console.log(updatedTruck);
-    $.ajax("/api/foodTrucks", {
+    $.ajax("/api/foodTrucks/"+userId, {
       type: "PUT",
       data: updatedTruck
     }).then(function (err, data) {
@@ -104,33 +104,62 @@ $(document).ready(function () {
 
   //Adding truck location
   $("#saveLocation").on("click", function () {
+    event.preventDefault();
     var truckId;
     var truckLocation = $("#editStreetAddress").val().trim() + ", " + $("#editCity").val().trim() + ", " + $("#editState").val().trim() + ", " + $("#editZipCode").val().trim();
-    event.preventDefault();
-    $.ajax("/api/user_data", {
-      type: "GET"
-    }).then(
-      function (res) {
-        $.ajax("/api/foodTrucks/" + res.id, {
+    var streetAddress = $("#editStreetAddress").val().trim().split(" ");
+    streetAddress = streetAddress.join("+");
+    var city = $("#editCity").val().trim().split(" ");
+    city = city.join("+");
+    var state = $("#editState").val().trim().split(" ");
+    state = state.join("+")
+
+    address = streetAddress + "+" + city + "+" + state + "+" + $("#editZipCode").val().trim();
+    console.log(address);
+
+    // Constructing a queryURL using the address captured from the Address input field in the HTML
+    var queryURL = "http://open.mapquestapi.com/geocoding/v1/address?key=DTPAAe2yk5mwUTAE1WcLA2uR5qZ7t5iE&location=" +
+      address;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      // After data comes back from the request
+      .then(function (response) {
+        console.log(queryURL);
+
+        //   console.log(response);
+        // storing the data from the AJAX request in the latLng variable
+        var latlong = response.results[0].locations[0].latLng;
+
+        $.ajax("/api/user_data", {
           type: "GET"
         }).then(
-          function (truckData) {
-            console.log(truckData);
-            truckId = truckData.id;
-            console.log("Truck ID from AJAX is ", truckId);
-            var locationDetails = {
-              location: truckLocation,
-              foodTruckId: truckId
-            }
-            console.log(locationDetails);
-            $.ajax("/api/foodTruckLocations/" + truckId, {
-              type: "POST",
-              data: locationDetails
-            }).then(function (err, data) {
-              console.log("Food Truck Location");
-            });
-          });
+          function (res) {
+            $.ajax("/api/foodTrucks/" + res.id, {
+              type: "GET"
+            }).then(
+              function (truckData) {
+                console.log(truckData);
+                truckId = truckData.id;
+                console.log("Truck ID from AJAX is ", truckId);
+                var locationDetails = {
+                  location: truckLocation,
+                  foodTruckId: truckId,
+                  latitude: latlong.lat,
+                  longitude: latlong.lng
+                }
+                console.log(locationDetails);
+                $.ajax("/api/foodTruckLocations" , {
+                  type: "POST",
+                  data: locationDetails
+                }).then(function (err, data) {
+                  console.log("Food Truck Location");
+                });
+              });
 
+          });
       });
   });
 });
